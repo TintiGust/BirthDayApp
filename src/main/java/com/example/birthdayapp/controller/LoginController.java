@@ -18,7 +18,7 @@ public class LoginController {
     private UsersService usersService;
 
     @GetMapping({"/{username}/{password}"})
-    public Optional<Users> login(@PathVariable("username") String username, @PathVariable("password") String password){
+    public Users login(@PathVariable("username") String username, @PathVariable("password") String password){
         return usersService.login(username, password);
     }
 }

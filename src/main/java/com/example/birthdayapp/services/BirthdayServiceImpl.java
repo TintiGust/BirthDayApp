@@ -41,4 +41,14 @@ public class BirthdayServiceImpl implements BirthdayService {
     public Birthday save(Birthday birthday) {
         return mBirthdayRepository.save(birthday);
     }
+
+    @Override
+    public Birthday getBirthdayById(Long birthdayId){
+        if (mBirthdayRepository.findById(birthdayId).isPresent()){
+            return mBirthdayRepository.findById(birthdayId).get();
+        }
+        else{
+            return null;
+        }
+    }
 }

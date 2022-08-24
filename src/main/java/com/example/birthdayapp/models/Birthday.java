@@ -54,6 +54,18 @@ public class Birthday {
         return users;
     }
 
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     @Override
     public String toString() {
         return "Birthday{" +

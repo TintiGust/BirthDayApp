@@ -9,4 +9,5 @@ public interface BirthdayService {
     public List<Birthday> getAllBirthdays();
     public List<Birthday> getBirthdaysByUsersId(Long userId);
     public Birthday save(Birthday birthday);
+    Birthday getBirthdayById(Long birthdayId);
 }

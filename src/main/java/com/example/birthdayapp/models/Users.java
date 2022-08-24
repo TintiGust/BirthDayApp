@@ -9,7 +9,6 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String username;
     private String password;
     private String email;
@@ -17,8 +16,15 @@ public class Users {
     @OneToMany(mappedBy="users")
     private Set<Birthday> birthdays;
 
-    public Users(){
+    public Users() {
         super();
+    }
+
+    public Users(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
     public Long getId() {

@@ -20,8 +20,13 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Optional<Users> login(String pUsername, String pPassword) {
-        return mUsersRepository.findUsersByUsernameAndPassword(pUsername, pPassword);
+    public Users login(String pUsername, String pPassword) {
+        if (mUsersRepository.findUsersByUsernameAndPassword(pUsername, pPassword).isPresent()){
+            return mUsersRepository.findUsersByUsernameAndPassword(pUsername, pPassword).get();
+        }
+        else{
+            return null;
+        }
     }
 
     @Override
@@ -35,8 +40,13 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public Optional<Users> getUsersById(Long id) {
-        return mUsersRepository.findById(id);
+    public Users getUsersById(Long id) {
+        if (mUsersRepository.findById(id).isPresent()){
+           return mUsersRepository.findById(id).get();
+        }
+        else{
+            return null;
+        }
     }
 
 
