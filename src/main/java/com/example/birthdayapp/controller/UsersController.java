@@ -7,6 +7,7 @@ import com.example.birthdayapp.services.UsersService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -29,8 +30,13 @@ public class UsersController {
     }
 
     @PostMapping("/{usersId}")
-    public Users getUsersById(@PathVariable("usersId") Long id){
-        return usersService.getUsersById(id);
+    public ResponseEntity<Users> getUsersById(@PathVariable("usersId") Long id){
+        try{
+            return ResponseEntity.ok(usersService.getUsersById(id));
+        }
+        catch (Exception e){
+            return ResponseEntity.badRequest().build();
+        }
     }
 
     @PostMapping("")
@@ -50,7 +56,7 @@ public class UsersController {
         return birthdayService.save(birthday);
     }
 
-    @PutMapping("/{userId]/birthdays")
+    @PutMapping("/{userId}/birthdays")
     public Birthday updateBirthday(@RequestParam("birthdayId") Long birthdayId,
                                    @RequestParam("firstName") String firstName,
                                    @RequestParam("lastName") String lastName,
